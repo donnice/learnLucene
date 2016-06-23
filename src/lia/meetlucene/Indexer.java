@@ -49,7 +49,7 @@ public class Indexer {
 	  }
 
 	  public void close() throws IOException {
-	    writer.close();                             //4
+	    writer.close();                             //close index
 	  }
 
 	  public int index(String dataDir, FileFilter filter)
