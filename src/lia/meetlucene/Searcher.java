@@ -49,5 +49,7 @@ public class Searcher {
 			Document doc = is.doc(scoreDoc.doc);
 			System.out.println(doc.get("fullpath"));
 		}
+		
+		is.close();
 	}
 }
