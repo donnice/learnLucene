@@ -14,12 +14,13 @@ import org.apache.lucene.util.Version;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 public class Searcher {
 	
 	public static void main(String[] args) throws Exception{
 		String indexDir = "/Users/shujiec/Documents/Index";
-		String q = args[0];
+		String q = "nene AND NOT xxx";
 		
 //		if(!indexDir.exists() || !indexDir.isDirectory()){
 //			throw new Exception(indexDir +
@@ -37,6 +38,16 @@ public class Searcher {
 				new StandardAnalyzer(
 				  Version.LUCENE_30));
 		Query query = parser.parse(q);
+		long start = System.currentTimeMillis();
+		TopDocs hits = is.search(query,100);
+		long end = System.currentTimeMillis();
 		
+		System.out.println("Found "+hits.totalHits+
+			" documents(s) (in "+(end-start)+" milliseconds) that matched query:"+q);
+		
+		for(ScoreDoc scoreDoc:hits.scoreDocs){
+			Document doc = is.doc(scoreDoc.doc);
+			System.out.println(doc.get("fullpath"));
+		}
 	}
 }
