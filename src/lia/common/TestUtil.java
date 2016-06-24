@@ -13,8 +13,8 @@ import java.io.*;
 
 public class TestUtil {
 	
-	static String indexDir = "/Users/shujiec/Documents/Index";         //1
-    static String dataDir = "/Users/shujiec/Documents/Data";          //2
+	static String indexDir = "/Users/shujiec/Documents/lia2e/data/technology/computers";         //1
+    static String dataDir = "/Users/shujiec/Documents/lia2e/data/technology/computers";          //2
 	
 	public static boolean hitsIncludeTitle(IndexSearcher searcher,
 			TopDocs hits, String title) throws IOException {

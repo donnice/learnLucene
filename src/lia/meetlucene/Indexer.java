@@ -21,7 +21,7 @@ public class Indexer {
 //	        + " <index dir> <data dir>");
 //	    }
 	    String indexDir = "/Users/shujiec/Documents/Index";         //1
-	    String dataDir = "/Users/shujiec/Documents/Data";          //2
+	    String dataDir = "/Users/shujiec/Documents/lia2e/data/technology/computers";          //2
 
 	    long start = System.currentTimeMillis();
 	    Indexer indexer = new Indexer(indexDir);
