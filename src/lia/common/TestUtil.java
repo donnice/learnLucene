@@ -12,6 +12,10 @@ import org.apache.lucene.store.Directory;
 import java.io.*;
 
 public class TestUtil {
+	
+	static String indexDir = "/Users/shujiec/Documents/Index";         //1
+    static String dataDir = "/Users/shujiec/Documents/Data";          //2
+	
 	public static boolean hitsIncludeTitle(IndexSearcher searcher,
 			TopDocs hits, String title) throws IOException {
 		for(ScoreDoc match:hits.scoreDocs){
@@ -47,7 +51,8 @@ public class TestUtil {
 	
 	public static Directory getBookIndexDirectory() throws IOException {
 		// The build.xml ant script sets this property for us:
-		return FSDirectory.open(new File(System.getProperty("index.dir")));
+//		return FSDirectory.open(new File(System.getProperty("index.dir")));
+		return FSDirectory.open(new File(indexDir));
 	}
 	
 	public static void rmDir(File dir) throws IOException {

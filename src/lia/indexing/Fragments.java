@@ -14,8 +14,6 @@ import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.util.Version;
 
-import com.sun.corba.se.impl.util.Version;
-
 public class Fragments {
 	public static void indexNumbersMethod() {
 		new Field("size","4096",
@@ -124,6 +122,19 @@ public class Fragments {
 	
 	public void fieldBoostMethod() throws IOException{
 		String senderName = getSenderName();
+		String subject = getSubject();
 		
+		// START
+		Field subjectField = new Field("subject",subject,
+									   Field.Store.YES,
+									   Field.Index.ANALYZED);
+		subjectField.setBoost(1.2F);
+		// END
+	}
+	
+	public void numberField(){
+		Document doc = new Document();
+		// START
+		doc.add(new NumericField("price").setDoubleValue(19.99));
 	}
 }
