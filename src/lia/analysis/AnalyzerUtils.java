@@ -45,5 +45,19 @@ public class AnalyzerUtils {
 		}
 		System.out.println();
 	}
+	
+	public static void assertAnalyzesTo(Analyzer analyzer, String input,
+										String[] output) throws Exception {
+		TokenStream stream = analyzer.tokenStream("field",new StringReader(input));
+		
+		TermAttribute termAttr = stream.addAttribute(TermAttribute.class);
+		for(String expected : output){
+			Assert.assertTrue(stream.incrementToken());
+			Assert.assertEquals(expected, termAttr.term());
+		}
+		Assert.assertFalse(stream.incrementToken());
+		stream.close();
+		
+	}
 
 }
