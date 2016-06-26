@@ -16,6 +16,18 @@ import java.io.IOException;
 import java.io.StringReader;
 
 public class AnalyzerUtils {
+	public static void displayTokens(Analyzer analyzer,
+							  String text) throws IOException{
+		displayTokens(analyzer.tokenStream("contents", new StringReader(text)));
+	}
+	
+	public static void displayTokens(TokenStream stream) throws IOException{
+		TermAttribute term = stream.addAttribute(TermAttribute.class);
+		while(stream.incrementToken()){
+			System.out.println("["+term.term()+"] ");
+		}
+	}
+	
 	public static void displayTokensWithFullDetails(Analyzer analyzer,
 													String text) throws IOException {
 		TokenStream stream = analyzer.tokenStream("contents", new StringReader(text));
