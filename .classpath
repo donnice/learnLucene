@@ -4,5 +4,8 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 6 [1.6.0_65-b14-468]"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/lucene-core-3.0.2.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/lia2e/lib/junit-4.1.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/lia2e/lib/nutch/nutch-1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/lia2e/lib/nutch/hadoop-0.19.1-core.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/lia2e/lib/org-apache-commons-logging.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
