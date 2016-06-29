@@ -20,6 +20,20 @@ import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.util.Version;
 
-public class KeywordAnalyzerTest {
-
+public class KeywordAnalyzerTest extends TestCase{
+	
+	private IndexSearcher searcher;
+	
+	public void setUp() throws Exception{
+		Directory directory = new RAMDirectory();
+		
+		IndexWriter writer = new IndexWriter(directory,
+									new SimpleAnalyzer(),
+									IndexWriter.MaxFieldLength.UNLIMITED);
+		Document doc = new Document();
+		doc.add(new Field("partum","Q36",
+						   Field.Store.NO,
+						   Field.Index.NOT_ANALYZED_NO_NORMS));
+		
+	}
 }
