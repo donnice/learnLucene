@@ -11,5 +11,5 @@ import javax.servlet.*;
 import lia.extsearch.queryparser.NumericQueryParserTest.NumericDateRangeQueryParser;
 
 public class SearchServletFragment {
-
+//test
 }
