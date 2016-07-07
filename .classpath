@@ -8,5 +8,8 @@
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/lia2e/lib/nutch/hadoop-0.19.1-core.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/lia2e/lib/org-apache-commons-logging.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/javax.servlet-api-3.0.1.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/commons-lang-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
