@@ -32,7 +32,7 @@ public class SecurityFilterTest extends TestCase{
 							   Field.Store.YES,
 							   Field.Index.NOT_ANALYZED));
 		document.add(new Field("keywords",
-							   "elwood",
+							   "elwood's sensitive info",
 							   Field.Store.YES,
 							   Field.Index.ANALYZED));
 		writer.addDocument(document);
@@ -46,5 +46,25 @@ public class SecurityFilterTest extends TestCase{
 							   "jake's sensitive info",
 							   Field.Store.YES,
 							   Field.Index.ANALYZED));
+		writer.addDocument(document);
+		
+		writer.close();
+		searcher = new IndexSearcher(directory);
+	}
+	
+	public void testSecurityFilter() throws Exception {
+		TermQuery query = new TermQuery(
+							new Term("keywords","info"));
+		assertEquals("Both documents match",
+					2, TestUtil.hitCount(searcher, query));
+		
+		Filter jakeFilter = new QueryWrapperFilter(
+			new TermQuery(new Term("owner","jake")));
+		
+		TopDocs hits = searcher.search(query,jakeFilter,10);
+		assertEquals(1,hits.totalHits);
+		assertEquals("elwood is safe",
+					 "jake's sensitive info",
+				searcher.doc(hits.scoreDocs[0].doc).get("keywords"));
 	}
 }
