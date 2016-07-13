@@ -21,7 +21,7 @@ public class MultiSearcherTest extends TestCase{
                 "dog", "elephant", "frog", "gila monster",
                 "horse", "iguana", "javelina", "kangaroo",
                 "lemur", "moose", "nematode", "orca",
-                "python", "quokka", "rat", "scorpion",
+                "python", "quokka", "rat", "scorpion","shiki",
                 "tarantula", "uromastyx", "vicuna",
                 "walrus", "xiphias", "yak", "zebra"};
 		
@@ -62,6 +62,6 @@ public class MultiSearcherTest extends TestCase{
 		TermRangeQuery query = new TermRangeQuery("animal","h","t",true,true);
 		
 		TopDocs hits = searcher.search(query,10);
-		assertEquals("tarantula not included",12,hits.totalHits);
+		assertEquals("tarantula not included",13,hits.totalHits);
 	}
 }
