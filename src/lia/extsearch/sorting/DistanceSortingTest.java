@@ -33,6 +33,12 @@ public class DistanceSortingTest extends TestCase{
 		addPoint(writer, "Cafe Poca Cosa","restaurant",5,9);
 		addPoint(writer, "Los Betos","restaurant",9,6);
 		addPoint(writer, "Nico's Taco Shop","restaurant",3,8);
+		
+		writer.close();
+		
+		searcher = new IndexSearcher(directory);
+		
+		query = new TermQuery(new Term("type","restaurant"));
 	}
 	
 	private void addPoint(IndexWriter writer,String name, String type, int x, int y)
