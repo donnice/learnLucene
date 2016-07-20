@@ -4,6 +4,8 @@ package lia.tika;
 // digester makes it easy to create and initialise a tree of objects based 
 // on an xml input file.
 
+// page 270
+
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 
