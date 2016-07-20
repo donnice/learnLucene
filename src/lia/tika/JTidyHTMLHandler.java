@@ -2,7 +2,6 @@ package lia.tika;
 
 import java.io.InputStream;
 
-import javax.xml.soap.Node;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -14,6 +13,7 @@ import org.xml.sax.SAXException;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
+import org.w3c.dom.Node;
 
 
 
@@ -72,6 +72,20 @@ public class JTidyHTMLHandler implements DocumentHandler{
 	
 	protected String getText(Node node) {
 		NodeList children = node.getChildNodes();
+		StringBuffer sb = new StringBuffer();
+		for(int i = 0; i < children.getLength();i++) {
+			Node child = children.item(i);
+			switch(child.getNodeType()) {
+				case Node.ELEMENT_NODE:
+					sb.append(getText(child));
+					sb.append(" ");
+					break;
+				case Node.TEXT_NODE:
+					sb.append(((Text)child).getData());
+					break;
+			}
+		}
+		return sb.toString();
 	}
 	
 

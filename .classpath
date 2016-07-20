@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/commons-digester-2.1.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/jtidy-4aug2000r7-dev.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/lucene-ant-3.0.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
