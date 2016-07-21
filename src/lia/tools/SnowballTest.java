@@ -6,6 +6,8 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.util.Version;
 import lia.analysis.AnalyzerUtils;
 
+// page 319
+
 //  it serves as a driver of an entire family of stemmers for different languages. 
 
 public class SnowballTest extends TestCase{
