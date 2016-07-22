@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/lucene-snowball-3.0.3.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/lucene-regex-3.0.3.jar"/>
 	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/lucene-highlighter-4.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/shujiec/Documents/spring-jar/lucene-misc-3.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
