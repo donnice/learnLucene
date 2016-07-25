@@ -82,7 +82,55 @@ public class ChainedFilterTest extends TestCase {
 					new TermQuery(new Term("owner","bob"))));
 		sueFilter = new CachingWrapperFilter(
 				new QueryWrapperFilter(
-					new TermQuery(new Term("owner","sue"))));
+					new TermQuery(new Term("owner","sue"))));	
+	}
+	
+	public void testSingleFilter() throws Exception {
+		ChainedFilter chain = new ChainedFilter(
+				new Filter[]{dateFilter});
 		
+		TopDocs hits = searcher.search(query, chain,10);
+		assertEquals(MAX,hits.totalHits);
+		
+		chain = new ChainedFilter(new Filter[] {bobFilter});
+		assertEquals(MAX/2, TestUtil.hitCount(searcher, query, chain), hits.totalHits);
+	}
+	
+	public void testOR() throws Exception {
+		ChainedFilter chain = new ChainedFilter(
+				new Filter[] {sueFilter,bobFilter});
+		
+		assertEquals("OR matches all",MAX, TestUtil.hitCount(searcher, query, chain));
+	}
+	
+	public void testAND() throws Exception {
+		ChainedFilter chain = new ChainedFilter(
+				new Filter[] {dateFilter, bobFilter}, ChainedFilter.AND);
+		TopDocs hits = searcher.search(query, chain, 10);
+		assertEquals("AND matches just Bob",MAX/2, hits.totalHits);
+		Document firstDoc = searcher.doc(hits.scoreDocs[0].doc);
+		assertEquals("bob",firstDoc.get("owner"));
+	}
+	
+	public void testXOR() throws Exception {
+		ChainedFilter chain = new ChainedFilter(
+			new Filter[]{dateFilter,bobFilter},ChainedFilter.XOR);
+		TopDocs hits = searcher.search(query, chain,10);
+		assertEquals("XOR matches sue",MAX/2, hits.totalHits);	// exclusive or
+		Document firstDoc = searcher.doc(hits.scoreDocs[0].doc);
+		assertEquals("sue",firstDoc.get("owner"));
+	}
+	
+	
+	public void testANDNOT() throws Exception {
+		ChainedFilter chain = new ChainedFilter(
+			new Filter[]{dateFilter,sueFilter},
+			new int[] {ChainedFilter.AND, ChainedFilter.ANDNOT});
+		
+		TopDocs hits = searcher.search(query,chain,10);
+		assertEquals("ANDNOT matches just Bob",
+					 MAX/2, hits.totalHits);
+		Document firstDoc = searcher.doc(hits.scoreDocs[0].doc);
+		assertEquals("bob",firstDoc.get("owner"));
 	}
 }
